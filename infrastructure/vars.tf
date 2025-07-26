@@ -24,3 +24,23 @@ variable "sleep_period" {
 variable "instance_user" {
   type = string
 }
+
+variable "instance_type" {
+  type = string
+  default = "t2.micro"
+}
+
+variable "asg_min" {
+  type = number
+  default = 1
+}
+
+variable "asg_desired" {
+  type = number
+  default = 2
+}
+
+variable "asg_max" {
+  type = number
+  default = 4
+}

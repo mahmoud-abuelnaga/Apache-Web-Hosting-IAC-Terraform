@@ -13,7 +13,7 @@ cd ..
 # download tooplate template
 # shellcheck disable=SC2154
 if [[ $download_template -eq 1 ]]; then
-    print_header "Downloading tooplate template"
+    print_header "Downloading template"
     bash "./download_html5up_template.sh" "$html5up_template_url" || die "Failed to download tooplate template"
 else
     print_header "Skipping downloading tooplate template"
@@ -27,3 +27,9 @@ if [[ -z "$sync_output" ]]; then
     print_msg "No files were uploaded to s3 bucket. Ending the script."
     exit 0
 fi
+
+print_header "Creating infrastructure"
+cd infrastructure || die "Failed to change directory to infrastructure"
+terraform init || die "Failed to initialize Terraform in infrastructure"
+terraform apply -auto-approve || die "Failed to apply Terraform in infrastructure"
+cd ..
