@@ -5,3 +5,5 @@ ami = "ami-0a72753edf3e631b7"
 sleep_period = 40
 instance_user = "ec2-user"
 instance_type = "t2.micro"
+instance_profile_name = "vprofile-ec2-instance-profile"
+launch_template_image_id = "ami-09af7d2e1f7c24a71"

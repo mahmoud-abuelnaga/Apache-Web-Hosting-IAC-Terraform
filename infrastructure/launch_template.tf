@@ -39,13 +39,13 @@ resource "aws_security_group" "vprofile_ec2_instance_sg" {
 resource "aws_launch_template" "vprofile_launch_template" {
   name                   = "vprofile-launch-template"
   description            = "Launch template for vprofile ec2 instances"
-  image_id               = aws_ami_from_instance.vprofile_ami.id
+  image_id               = var.launch_template_image_id
   instance_type          = var.instance_type
   key_name               = aws_key_pair.vprofile_key_pair.key_name
   vpc_security_group_ids = [aws_security_group.vprofile_ec2_instance_sg.id]
   update_default_version = true
   iam_instance_profile {
-    name = aws_iam_instance_profile.ec2_instance_profile.name
+    name = var.instance_profile_name
   }
   
   tags = {

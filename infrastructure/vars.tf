@@ -44,3 +44,11 @@ variable "asg_max" {
   type = number
   default = 4
 }
+
+variable "launch_template_image_id" {
+  type = string
+}
+
+variable "instance_profile_name" {
+  type = string
+}
